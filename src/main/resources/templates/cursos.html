@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .caro {
+            color: red !important;
+            font-weight: bold;
+        }
+
+        .barato {
+            color: green !important;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Robótica</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cursos">Cursos</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- FORMULARIO
+<main class="container my-5">
+    <h1>LISTA DE CURSOS</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th>Duración</th>
+            <th>Nivel</th>
+            <th>Modalidad</th>
+            <th>Rango</th>
+        </tr>
+        </thead>
+        <tbody th:each="curso : ${cursos}">
+        <tr>
+            <td th:text="${curso.nombre}">Nombre</td>
+            <td th:text="${curso.precio}">Precio</td>
+            <td th:text="${curso.descripcion}">Descripción</td>
+            <td th:text="${curso.duracion}">Duración</td>
+            <td th:text="${curso.nivel}">Nivel</td>
+            <td th:text="${curso.modalidad}">Modalidad</td>
+            <td th:class="${curso.precio > 200} ? 'caro' : 'barato'"
+                th:text="${curso.precio > 200} ? 'Caro' : 'Barato'">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>-->
+
+<!-- FORMULARIO -->
+<section class="container my-5">
+    <h2 class="text-center mb-4">REGISTRO</h2>
+    <form class="p-4 border rounded shadow bg-light" method="post" action="/guardarCurso" th:object="${registro}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="curso" class="form-label">Selecciona un Curso</label>
+                    <select class="form-select" id="curso" th:field="*{curso}">
+                        <option value="" disabled selected>----Selecciona un Curso----</option>
+                        <option value="JAVA">JAVA</option>
+                        <option value="PHP">PHP</option>
+                        <option value="PYTHON">PYTHON</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" th:field="*{nombre}" placeholder="Ingresa tu nombre" id="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" th:field="*{apellido}" placeholder="Ingresa tu apellido" id="apellido"
+                           required>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" th:field="*{dni}" placeholder="DNI" id="dni" required>
+                </div>
+            </div>
+
+            <!-- Tabla con buscador -->
+            <section class="container my-5">
+                <h2 class="text-center mb-4">Lista de Usuarios</h2>
+                <!-- Campo de búsqueda -->
+                <div class="mb-3">
+                    <input type="text" id="buscarfilas" class="form-control" placeholder="Buscar en la tabla...">
+                </div>
+                <!-- Tabla -->
+                <table id="tabla" class="table table-striped table-hover table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Curso</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>DNI</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="r:${registros}">
+                        <td th:text="${r.curso}"></td>
+                        <td th:text="${r.nombre}"></td>
+                        <td th:text="${r.apellido}"></td>
+                        <td th:text="${r.dni}"></td>
+                        <td>
+                            <a th:href="@{/eliminar(id=${r.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <!-- Botón de envío -->
+            <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-primary px-5">GUARDAR</button>
+            </div>
+        </div>
+        </div>
+    </form>
+</section>
+
+
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Nuestra Empresa. Todos los derechos reservados.</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```

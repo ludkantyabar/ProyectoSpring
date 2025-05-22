@@ -1,0 +1,65 @@
+/* Estilo cARRUSEL */
+.carousel-inner img {
+  object-fit: cover; /* Recorta la imagen para que llene el contenedor */
+  height: 350px; /* Altura del carrusel */
+}
+/* Estilo para la sección de productos */
+#productos .card {
+  height: 100%; /* Asegura que todas las cards tengan la misma altura */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#productos .card-img-top {
+  object-fit: cover; /* Recorta la imagen para que llene el espacio */
+  height: 200px; 
+  width: 100%; 
+}
+
+#productos .card-body {
+  flex-grow: 1; /* Hace que el contenido del cuerpo del card ocupe el espacio restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#productos .card-title {
+  font-size: 1.25rem; /* Ajusta el tamaño del título */
+  font-weight: bold;
+  text-align: center;
+}
+
+#productos .card-text {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#productos .btn {
+  align-self: center; /* Centra el botón dentro del card */
+}
+
+/* Estilo para la caja de la sección Hero */
+.bg-light .container .border {
+  border: 2px solid #007bff; 
+  border-radius: 10px; 
+  background-color: #ffffff; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.bg-light .container .border:hover {
+  transform: translateY(-5px); /* Eleva la caja al pasar el mouse */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo profesional para la sección de cards */
+.container.my {
+  background-color: #ffffff; /* Fondo blanco */
+  border: 2px solid #007bff; /* Borde azul */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  padding: 20px; /* Espaciado interno */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación al pasar el mouse */
+}
