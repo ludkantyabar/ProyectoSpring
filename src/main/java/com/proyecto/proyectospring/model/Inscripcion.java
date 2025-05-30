@@ -8,19 +8,24 @@ public class Inscripcion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "alumno_id")
     private Alumno alumno;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "curso_id")
     private Curso curso;
 
     @ManyToOne
+    @JoinColumn(name = "profesor_id")
     private Profesor profesor;
 
     @ManyToOne
+    @JoinColumn(name = "horario_id")
     private Horario horario;
 
     @ManyToOne
+    @JoinColumn(name = "sede_id")
     private Sede sede;
 
     // Getters y setters

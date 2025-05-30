@@ -9,9 +9,7 @@ public class Curso {
     private Long id;
 
     private String nombre;
-    private double precio;
-    private String descripcion;
-    private String nivel;
+
     private String modalidad;
 
     @ManyToOne
@@ -43,32 +41,7 @@ public class Curso {
         return this;
     }
 
-    public double getPrecio() {
-        return precio;
-    }
 
-    public Curso setPrecio(double precio) {
-        this.precio = precio;
-        return this;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public Curso setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-        return this;
-    }
-
-    public String getNivel() {
-        return nivel;
-    }
-
-    public Curso setNivel(String nivel) {
-        this.nivel = nivel;
-        return this;
-    }
 
     public String getModalidad() {
         return modalidad;
