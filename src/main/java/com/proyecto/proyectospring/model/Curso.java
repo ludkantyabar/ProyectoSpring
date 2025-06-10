@@ -1,6 +1,9 @@
 package com.proyecto.proyectospring.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Curso {
@@ -8,17 +11,23 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(max = 100)
     private String nombre;
 
+    @NotBlank
     private String modalidad;
 
     @ManyToOne
+    @NotNull
     private Profesor profesor;
 
     @ManyToOne
+    @NotNull
     private Horario horario;
 
     @ManyToOne
+    @NotNull
     private Sede sede;
 
     // getters y setters
@@ -40,8 +49,6 @@ public class Curso {
         this.nombre = nombre;
         return this;
     }
-
-
 
     public String getModalidad() {
         return modalidad;
